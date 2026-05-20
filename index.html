@@ -1,1 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Physics Dashboard</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+        body { background: #0b0c10; color: #fff; display: flex; height: 100vh; overflow: hidden; }
+        .sidebar { width: 240px; background: #1f2833; display: flex; flex-direction: column; border-right: 2px solid #45a29e; }
+        .sidebar-header { padding: 20px; font-size: 1.1rem; font-weight: bold; text-align: center; color: #66fcf1; border-bottom: 1px solid #2f3b4c; }
+        .nav-list { list-style: none; flex-grow: 1; padding: 15px 0; }
+        .nav-item { padding: 15px 25px; cursor: pointer; color: #c5c6c7; display: flex; align-items: center; font-weight: 500; transition: all 0.2s ease; }
+        .nav-item:hover, .nav-item.active { background: #45a29e; color: #0b0c10; font-weight: bold; }
+        .main-content { flex-grow: 1; display: flex; flex-direction: column; height: 100%; }
+        .top-bar { height: 60px; background: #1f2833; display: flex; align-items: center; padding: 0 25px; border-bottom: 1px solid #2f3b4c; color: #66fcf1; font-weight: bold; }
+        .game-container { flex-grow: 1; width: 100%; height: calc(100vh - 60px); background: #000; }
+        iframe { width: 100%; height: 100%; border: none; overflow: hidden; }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">🔬 Lab Simulation Modules</div>
+        <ul class="nav-list">
+            <li class="nav-item active" onclick="loadGame('Escape Road 3', 'https://github.io', this)">🚗 Escape Road 3</li>
+            <li class="nav-item" onclick="loadGame('Slope 3D', 'https://github.io', this)">🟢 Slope 3D</li>
+            <li class="nav-item" onclick="loadGame('Arcade Hub', 'https://freeunblockedgames.online', this)">🎮 Fun Games Arcade</li>
+        </ul>
+    </nav>
+    <main class="main-content">
+        <div class="top-bar">Module: <span id="current-title">Escape Road 3</span></div>
+        <div class="game-container">
+            <iframe id="game-frame" src="https://github.io" allowfullscreen></iframe>
+        </div>
+    </main>
+    <script>
+        function loadGame(title, url, element) {
+            document.getElementById('current-title').textContent = title;
+            document.getElementById('game-frame').src = url;
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
 
